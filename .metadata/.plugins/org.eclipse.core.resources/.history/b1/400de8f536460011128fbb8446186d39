@@ -1,0 +1,93 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="../partials/header.jsp" %>
+
+<link rel="stylesheet" href="/EcomStore/assets/css/checkout.css">
+
+<div class="checkout-container">
+
+<h2>Checkout 🧾</h2>
+
+<form action="/EcomStore/place-order" method="post">
+
+<div class="checkout-layout">
+
+<!-- LEFT SIDE -->
+<div class="checkout-left">
+
+    <!-- ADDRESS -->
+    <div class="card">
+        <h3>Delivery Address</h3>
+
+        <textarea name="address" placeholder="Enter full delivery address..." required></textarea>
+
+        <div class="row">
+            <input type="text" placeholder="City" required>
+            <input type="text" placeholder="Pincode" required>
+        </div>
+    </div>
+
+    <!-- PAYMENT -->
+    <div class="card">
+        <h3>Select Payment Method</h3>
+
+        <label class="payment-option">
+            <input type="radio" name="payment" value="UPI" checked>
+            <span>📱 UPI / Google Pay / PhonePe</span>
+        </label>
+
+        <label class="payment-option">
+            <input type="radio" name="payment" value="COD">
+            <span>💵 Cash on Delivery (+ ₹9 charge)</span>
+        </label>
+
+    </div>
+
+</div>
+
+<!-- RIGHT SIDE -->
+<div class="checkout-right">
+
+    <div class="card summary">
+
+        <h3>Order Summary</h3>
+
+        <p>Items Total: &#8377; <%= request.getAttribute("total") %></p>
+        <p>Delivery: FREE</p>
+
+        <p id="codCharge" style="display:none;">COD Charges: &#8377; 9</p>
+
+        <hr>
+
+        <h2 id="finalTotal">Total: &#8377; <%= request.getAttribute("total") %></h2>
+
+        <button class="place-order-btn">Place Order</button>
+
+    </div>
+
+</div>
+
+</div>
+
+</form>
+
+</div>
+
+<script>
+    const cod = document.querySelector("input[value='COD']");
+    const upi = document.querySelector("input[value='UPI']");
+    const codCharge = document.getElementById("codCharge");
+    const total = <%= request.getAttribute("total") %>;
+    const finalTotal = document.getElementById("finalTotal");
+
+    cod.addEventListener("change", () => {
+        codCharge.style.display = "block";
+        finalTotal.innerHTML = "Total: ₹" + (total + 9);
+    });
+
+    upi.addEventListener("change", () => {
+        codCharge.style.display = "none";
+        finalTotal.innerHTML = "Total: ₹" + total;
+    });
+</script>
+
+<%@ include file="../partials/footer.jsp" %>

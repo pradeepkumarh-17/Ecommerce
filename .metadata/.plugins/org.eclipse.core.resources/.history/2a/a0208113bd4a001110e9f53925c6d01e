@@ -1,0 +1,39 @@
+package com.ecommerce.controller;
+
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+import jakarta.servlet.annotation.WebServlet;
+import java.io.IOException;
+
+import com.ecommerce.dao.ProductDAO;
+import com.ecommerce.dao.impl.ProductDAOImpl;
+import com.ecommerce.model.Product;
+
+@WebServlet("/product-details")
+public class ProductDetailsController extends HttpServlet {
+
+    protected void doGet(HttpServletRequest req, HttpServletResponse res)
+            throws ServletException, IOException {
+
+        System.out.println("DETAILS CONTROLLER HIT"); // debug
+
+        String idParam = req.getParameter("id");
+
+        if (idParam == null) {
+            res.sendRedirect("/EcomStore/product");
+            return;
+        }
+
+        int id = Integer.parseInt(idParam);
+
+        ProductDAO dao = new ProductDAOImpl();
+        Product product = dao.getProductById(id);
+
+        req.setAttribute("product", product);
+
+        RequestDispatcher rd =
+                req.getRequestDispatcher("views/product/product-details.jsp");
+
+        rd.forward(req, res);
+    }
+}

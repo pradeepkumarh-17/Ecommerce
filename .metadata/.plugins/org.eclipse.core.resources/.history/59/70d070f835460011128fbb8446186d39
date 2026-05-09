@@ -1,0 +1,13 @@
+<%@ include file="../partials/header.jsp" %>
+
+<div class="container">
+
+<h2>🎉 Order Placed Successfully!</h2>
+
+<a href="/EcomStore/product">
+    <button>Continue Shopping</button>
+</a>
+
+</div>
+
+<%@ include file="../partials/footer.jsp" %>

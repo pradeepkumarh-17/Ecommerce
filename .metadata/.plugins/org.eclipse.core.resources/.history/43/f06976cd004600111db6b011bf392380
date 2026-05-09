@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>EcomStore</title>
+
+    <link rel="stylesheet" href="/EcomStore/assets/css/style.css">
+</head>
+<body>
+
+<header class="header">
+    
+    <!-- LOGO -->
+    <div class="logo">
+        <a href="/EcomStore/views/user/home.jsp">EcomStore</a>
+    </div>
+
+    <!-- SEARCH -->
+    <div class="search-bar">
+        <input type="text" placeholder="Search products...">
+        <button>🔍</button>
+    </div>
+
+    <!-- NAVIGATION -->
+    <div class="nav-links">
+        <a href="/EcomStore/views/user/home.jsp">Home</a>
+        <a href="/EcomStore/products">Products</a>
+        <a href="/EcomStore/cart">Cart</a>
+        <a href="/EcomStore/views/auth/login.jsp">Login</a>
+    </div>
+
+</header>

@@ -1,0 +1,107 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%@ page import="java.util.*, com.ecommerce.model.Product" %>
+
+<%@ include file="../partials/header.jsp" %>
+
+<link rel="stylesheet" href="/EcomStore/assets/css/product.css">
+
+<div class="container">
+
+    <h2>All Products</h2>
+
+    <!-- ================= FILTER SECTION ================= -->
+    <div class="filter-section">
+        <form action="/EcomStore/product" method="get">
+
+            <!-- SEARCH -->
+            <input type="text" name="search" placeholder="Search product"
+                   value="<%= request.getParameter("search") != null ? request.getParameter("search") : "" %>">
+
+            <!-- CATEGORY -->
+            <select name="category">
+                <option value="">All Categories</option>
+                <option value="1" <%= "1".equals(request.getParameter("category")) ? "selected" : "" %>>Clothes</option>
+                <option value="2" <%= "2".equals(request.getParameter("category")) ? "selected" : "" %>>Toys</option>
+                <option value="3" <%= "3".equals(request.getParameter("category")) ? "selected" : "" %>>Footwear</option>
+                <option value="4" <%= "4".equals(request.getParameter("category")) ? "selected" : "" %>>Accessories</option>
+            </select>
+
+            <!-- GENDER -->
+            <select name="gender">
+                <option value="">All</option>
+                <option value="Male" <%= "Male".equals(request.getParameter("gender")) ? "selected" : "" %>>Male</option>
+                <option value="Female" <%= "Female".equals(request.getParameter("gender")) ? "selected" : "" %>>Female</option>
+                <option value="Kids" <%= "Kids".equals(request.getParameter("gender")) ? "selected" : "" %>>Kids</option>
+                <option value="Unisex" <%= "Unisex".equals(request.getParameter("gender")) ? "selected" : "" %>>Unisex</option>
+            </select>
+
+            <!-- PRICE -->
+            <select name="price">
+                <option value="">All Price</option>
+                <option value="1" <%= "1".equals(request.getParameter("price")) ? "selected" : "" %>>Below 500</option>
+                <option value="2" <%= "2".equals(request.getParameter("price")) ? "selected" : "" %>>500 - 1500</option>
+                <option value="3" <%= "3".equals(request.getParameter("price")) ? "selected" : "" %>>1500+</option>
+            </select>
+
+            <button type="submit">Apply</button>
+
+        </form>
+    </div>
+
+    <!-- ================= PRODUCT GRID ================= -->
+    <div class="product-grid">
+
+        <%
+            List<Product> list = (List<Product>) request.getAttribute("products");
+
+            if (list != null && !list.isEmpty()) {
+                for (Product p : list) {
+
+                    String img = p.getImageUrl();
+
+                    // IMAGE HANDLING
+                    if (img == null || img.isEmpty()) {
+                        img = "https://via.placeholder.com/200";
+                    } else if (!img.startsWith("http")) {
+                        img = "/EcomStore/" + img;
+                    }
+        %>
+
+        <div class="product-card">
+
+            <!-- CLICKABLE PRODUCT -->
+            <a href="/EcomStore/product-details?id=<%= p.getProductId() %>" class="product-link">
+            
+                <img src="<%= img %>" alt="product">
+
+                <h3><%= p.getName() %></h3>
+
+                <p class="price">₹<%= p.getPrice() %></p>
+
+            </a>
+
+            <!-- ADD TO CART (FIXED) -->
+            <form action="/EcomStore/cart" method="post">
+                <input type="hidden" name="productId" value="<%= p.getProductId() %>">
+                <button type="submit" class="cart-btn">Add to Cart</button>
+            </form>
+
+        </div>
+
+        <%
+                }
+            } else {
+        %>
+
+        <p class="no-data">No products found</p>
+
+        <%
+            }
+        %>
+
+    </div>
+
+</div>
+
+<%@ include file="../partials/footer.jsp" %>

@@ -1,0 +1,63 @@
+/* PAYMENT UI */
+.payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.payment-option {
+    display: block;
+    padding: 15px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+    position: relative;
+}
+
+/* HIDE RADIO */
+.payment-option input {
+    display: none;
+}
+
+/* CONTENT */
+.option-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.icon {
+    font-size: 22px;
+}
+
+/* SELECT EFFECT */
+.payment-option input:checked + .option-content {
+    border-left: 4px solid #00ff9d;
+    padding-left: 10px;
+}
+
+/* EXTRA FIELDS */
+.payment-extra {
+    margin-top: 10px;
+    display: none;
+}
+
+/* SHOW ONLY WHEN SELECTED */
+.payment-option input:checked ~ .payment-extra {
+    display: block;
+}
+
+/* INPUT STYLE */
+.payment-extra input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+/* CARD ROW */
+.card-fields .row {
+    display: flex;
+    gap: 10px;
+}

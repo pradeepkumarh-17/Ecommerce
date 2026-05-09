@@ -1,0 +1,56 @@
+<%@ page import="com.ecommerce.model.Product" %>
+<%@ include file="../partials/header.jsp" %>
+
+<link rel="stylesheet" href="/EcomStore/assets/css/product.css">
+
+<div class="container">
+
+<%
+    Product p = (Product) request.getAttribute("product");
+
+    if (p != null) {
+
+        String img = p.getImageUrl();
+
+        if (img == null || img.isEmpty()) {
+            img = "https://picsum.photos/300";
+        }
+%>
+
+<div class="product-details">
+
+    <div class="image-section">
+        <img src="<%= img %>"
+             onerror="this.src='https://source.unsplash.com/300x300/?product';">
+    </div>
+
+    <div class="info-section">
+
+        <h2><%= p.getName() %></h2>
+
+        <p class="price">₹<%= p.getPrice() %></p>
+
+        <p class="desc">High quality product. Best for daily use.</p>
+
+        <form action="/EcomStore/cart" method="post">
+            <input type="hidden" name="productId" value="<%= p.getProductId() %>">
+            <button class="cart-btn big-btn">Add to Cart</button>
+        </form>
+
+    </div>
+
+</div>
+
+<%
+    } else {
+%>
+
+<p>Product not found</p>
+
+<%
+    }
+%>
+
+</div>
+
+<%@ include file="../partials/footer.jsp" %>

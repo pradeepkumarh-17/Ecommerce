@@ -1,0 +1,113 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account | LuxStore</title>
+
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- ONLY AUTH CSS -->
+    <link rel="stylesheet"
+          href="<%= request.getContextPath() %>/assets/css/auth.css">
+
+</head>
+
+<body>
+
+    <div class="auth-container">
+
+        <div class="auth-box">
+
+            <!-- LOGO -->
+            <div class="logo">
+                LUX<span>STORE</span>
+            </div>
+
+            <!-- TITLE -->
+            <h2>Create Account</h2>
+
+            <!-- SUBTITLE -->
+            <p class="subtitle">
+                Join LuxStore and explore premium shopping
+            </p>
+
+            <!-- FORM -->
+            <form action="<%= request.getContextPath() %>/auth"
+                  method="post">
+
+                <input type="hidden"
+                       name="action"
+                       value="register">
+
+                <!-- NAME -->
+                <div class="input-group">
+                    <input type="text"
+                           name="name"
+                           placeholder="Full Name"
+                           required>
+                </div>
+
+                <!-- EMAIL -->
+                <div class="input-group">
+                    <input type="email"
+                           name="email"
+                           placeholder="Email Address"
+                           required>
+                </div>
+
+                <!-- PASSWORD -->
+                <div class="input-group">
+                    <input type="password"
+                           name="password"
+                           placeholder="Create Password"
+                           required>
+                </div>
+
+                <!-- BUTTON -->
+                <button type="submit">
+                    Create Account
+                </button>
+
+            </form>
+
+            <!-- LOGIN -->
+            <div class="switch">
+                Already have an account?
+
+                <a href="<%= request.getContextPath() %>/views/auth/login.jsp">
+                    Sign In
+                </a>
+            </div>
+
+            <!-- BACK -->
+            <a class="back-home"
+               href="<%= request.getContextPath() %>/views/user/home.jsp">
+
+                ← Back to Home
+
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

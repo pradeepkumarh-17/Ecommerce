@@ -1,0 +1,73 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%@ include file="../partials/header.jsp" %>
+
+<link rel="stylesheet" href="/EcomStore/assets/css/style.css">
+<link rel="stylesheet" href="/EcomStore/assets/css/product.css">
+
+<div class="container">
+
+    <!-- ================= HERO SECTION ================= -->
+    <div class="hero">
+
+        <h1>Summer Collection ☀️</h1>
+
+        <p>Up to 65% Off</p>
+
+        <a href="/EcomStore/product">
+            <button class="cart-btn" style="width:auto; padding:10px 20px;">
+                Shop Now
+            </button>
+        </a>
+
+    </div>
+
+
+    <!-- ================= CATEGORY ================= -->
+    <div class="category-section">
+
+        <h2>Shop by Category</h2>
+
+        <div class="category-grid">
+
+            <a href="/EcomStore/product?category=1" class="category-card">Clothes</a>
+
+            <a href="/EcomStore/product?category=2" class="category-card">Toys</a>
+
+            <a href="/EcomStore/product?category=3" class="category-card">Footwear</a>
+
+            <a href="/EcomStore/product?category=4" class="category-card">Accessories</a>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= FEATURED PRODUCTS ================= -->
+    <h2 style="margin:20px;">Featured Products</h2>
+
+    <div class="product-grid">
+
+        <div class="product-card">
+            <img src="/EcomStore/images/shirt1.jpg" alt="shirt">
+            <h3>Men Casual Shirt</h3>
+            <p class="price">₹799</p>
+            <a href="/EcomStore/product">
+                <button class="cart-btn">View</button>
+            </a>
+        </div>
+
+        <div class="product-card">
+            <img src="/EcomStore/images/shoes.jpg" alt="shoes">
+            <h3>Running Shoes</h3>
+            <p class="price">₹2499</p>
+            <a href="/EcomStore/product">
+                <button class="cart-btn">View</button>
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+<%@ include file="../partials/footer.jsp" %>

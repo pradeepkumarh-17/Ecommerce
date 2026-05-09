@@ -1,0 +1,10 @@
+127.0.0.1 - - [06/May/2026:22:51:46 +0530] "GET / HTTP/1.1" 404 752
+0:0:0:0:0:0:0:1 - - [06/May/2026:22:51:46 +0530] "GET /EcomStore/views/user/home.jsp HTTP/1.1" 200 6858
+0:0:0:0:0:0:0:1 - - [06/May/2026:22:51:46 +0530] "GET /EcomStore/src/main/webapp/assets/images/kurti.jpg HTTP/1.1" 404 825
+0:0:0:0:0:0:0:1 - - [06/May/2026:22:51:46 +0530] "GET /EcomStore/assets/css/modern-ui.css HTTP/1.1" 200 6589
+0:0:0:0:0:0:0:1 - - [06/May/2026:22:51:46 +0530] "GET /EcomStore/assets/css/style.css HTTP/1.1" 200 4089
+0:0:0:0:0:0:0:1 - - [06/May/2026:22:51:47 +0530] "GET /EcomStore/assets/js/modern-ui.js HTTP/1.1" 200 3203
+0:0:0:0:0:0:0:1 - - [06/May/2026:22:52:01 +0530] "GET /EcomStore/views/user/home.jsp HTTP/1.1" 200 6858
+0:0:0:0:0:0:0:1 - - [06/May/2026:22:52:01 +0530] "GET /EcomStore/src/main/webapp/assets/images/kurti.jpg HTTP/1.1" 404 825
+0:0:0:0:0:0:0:1 - - [06/May/2026:22:52:09 +0530] "GET /EcomStore/product HTTP/1.1" 200 36230
+0:0:0:0:0:0:0:1 - - [06/May/2026:22:52:09 +0530] "GET /EcomStore/assets/css/product.css HTTP/1.1" 200 5122

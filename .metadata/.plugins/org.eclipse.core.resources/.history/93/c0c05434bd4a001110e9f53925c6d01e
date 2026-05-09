@@ -1,0 +1,133 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="com.ecommerce.model.Product" %>
+
+<%@ include file="../partials/header.jsp" %>
+
+<link rel="stylesheet" href="/EcomStore/assets/css/product.css">
+
+<div class="container-3d">
+    <div class="container">
+
+    <%
+        Product p = (Product) request.getAttribute("product");
+
+        if (p != null) {
+
+            String img = p.getImageUrl();
+
+            if (img == null || img.isEmpty()) {
+                img = "https://picsum.photos/400";
+            }
+    %>
+
+    <div class="product-details glass-panel">
+
+        <!-- IMAGE -->
+        <div class="image-section container-3d">
+            <div class="product-img-card">
+                <img src="<%= img %>" onerror="this.src='https://source.unsplash.com/400x400/?product';">
+            </div>
+        </div>
+
+        <!-- INFO -->
+        <div class="info-section">
+
+            <h2 class="product-title"><%= p.getName() %></h2>
+
+            <!-- ⭐ RATING (FIXED) -->
+            <div class="rating">
+                <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+                <span class="review-count">(4.2/5 • 120 premium reviews)</span>
+            </div>
+
+            <!-- 💸 PRICE -->
+            <div class="price-box">
+                <p class="price">₹<%= p.getPrice() %></p>
+                <span class="discount-badge">20% OFF</span>
+            </div>
+
+            <!-- 📄 DESCRIPTION -->
+            <p class="desc">
+                Exquisite craftsmanship meets modern design. This piece is curated for those who value both style and substance.
+            </p>
+
+            <!-- 🎨 COLOR -->
+            <div class="option">
+                <strong>Available Colors:</strong>
+                <div class="color-options">
+                    <span class="color-box" style="background:#111;"></span>
+                    <span class="color-box" style="background:#0f3460;"></span>
+                    <span class="color-box" style="background:#c5a358;"></span>
+                </div>
+            </div>
+
+            <!-- 👕 SIZE -->
+            <div class="option">
+                <strong>Select Size:</strong>
+                <div class="size-options">
+                    <span class="size-box">S</span>
+                    <span class="size-box active">M</span>
+                    <span class="size-box">L</span>
+                    <span class="size-box">XL</span>
+                </div>
+            </div>
+
+            <!-- 🛒 ADD TO CART -->
+            <form action="/EcomStore/cart" method="post" class="details-cart-form">
+                <input type="hidden" name="productId" value="<%= p.getProductId() %>">
+                <button class="cart-btn big-btn">Add to Collection</button>
+            </form>
+
+            <!-- 🚚 DELIVERY -->
+            <div class="delivery-info">
+                <p><strong>Premium Delivery:</strong> Complimentary shipping in 2-3 business days</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- 💬 REVIEWS -->
+    <div class="reviews-section">
+
+        <h3 class="section-title">Client Testimonials</h3>
+
+        <div class="reviews-grid">
+            <div class="review-card glass-panel">
+                <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>"Absolutely stunning quality. The attention to detail is unmatched."</p>
+                <small>- Pradeep S.</small>
+            </div>
+
+            <div class="review-card glass-panel">
+                <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+                <p>"A perfect addition to my wardrobe. Fast and secure delivery."</p>
+                <small>- Rahul K.</small>
+            </div>
+
+            <div class="review-card glass-panel">
+                <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+                <p>"The fabric feels premium and the fit is exactly as described."</p>
+                <small>- Sneha M.</small>
+            </div>
+        </div>
+
+    </div>
+
+    <%
+        } else {
+    %>
+
+    <div class="error-panel glass-panel">
+        <p>Product not found</p>
+        <a href="/EcomStore/product" class="btn">Return to Catalog</a>
+    </div>
+
+    <%
+        }
+    %>
+
+    </div>
+</div>
+
+<%@ include file="../partials/footer.jsp" %>

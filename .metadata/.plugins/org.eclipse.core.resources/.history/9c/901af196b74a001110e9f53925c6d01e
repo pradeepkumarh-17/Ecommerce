@@ -1,0 +1,87 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account | LuxStore</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/auth.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/modern-ui.css">
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+
+<body class="auth-page">
+
+    <div class="bg-animation"></div>
+
+    <div class="auth-container container-3d">
+
+        <div class="auth-box glass-panel">
+
+            <div class="logo">LUX<span>STORE</span></div>
+            <h2>Join LuxStore</h2>
+            <p class="subtitle">Experience premium shopping like never before</p>
+
+            <form action="<%= request.getContextPath() %>/auth" method="post" class="animated-form">
+
+                <input type="hidden" name="action" value="register">
+                
+                <div class="input-group">
+                    <input type="text" name="name" placeholder="Full Name" required>
+                </div>
+
+                <div class="input-group">
+                    <input type="email" name="email" placeholder="Email Address" required>
+                </div>
+
+                <div class="input-group">
+                    <input type="password" name="password" placeholder="Create Password" required>
+                </div>
+
+                <button type="submit" class="cart-btn">Create Account</button>
+
+            </form>
+
+            <p class="switch">
+                Already have an account? <a href="<%= request.getContextPath() %>/views/auth/login.jsp">Sign In</a>
+            </p>
+
+            <a class="back-home" href="<%= request.getContextPath() %>/views/user/home.jsp">
+                <span>&larr;</span> Back to Home
+            </a>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            gsap.from('.auth-box', {
+                duration: 1.2,
+                y: 100,
+                opacity: 0,
+                scale: 0.8,
+                rotationX: -20,
+                ease: 'power4.out'
+            });
+
+            gsap.from('.input-group, .cart-btn', {
+                duration: 1,
+                x: 30,
+                opacity: 0,
+                stagger: 0.1,
+                delay: 0.5,
+                ease: 'power3.out'
+            });
+        });
+    </script>
+</body>
+</html>

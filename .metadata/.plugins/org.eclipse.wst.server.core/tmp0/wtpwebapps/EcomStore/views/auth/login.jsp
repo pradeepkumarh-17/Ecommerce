@@ -1,0 +1,142 @@
+<%@ page contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Login | CloudCart</title>
+
+    <!-- GOOGLE FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet"
+          href="<%= request.getContextPath() %>/assets/css/auth.css">
+
+</head>
+
+<body>
+
+<div class="auth-container">
+
+    <div class="auth-box">
+
+        <!-- LOGO -->
+        <div class="logo">
+
+            LUX<span>STORE</span>
+
+        </div>
+
+        <!-- TITLE -->
+        <h2>
+
+            Welcome Back
+
+        </h2>
+
+        <!-- SUBTITLE -->
+        <p class="subtitle">
+
+            Sign in to continue your
+            premium shopping experience
+
+        </p>
+
+        <!-- ERROR -->
+        <%
+            String error =
+                    request.getParameter("error");
+
+            if(error != null){
+        %>
+
+            <div class="error-box">
+
+                Invalid email or password
+
+            </div>
+
+        <%
+            }
+        %>
+
+        <!-- LOGIN FORM -->
+        <form action="<%= request.getContextPath() %>/auth"
+              method="post">
+
+            <input type="hidden"
+                   name="action"
+                   value="login">
+
+            <!-- EMAIL -->
+            <div class="input-group">
+
+                <input type="email"
+                       name="email"
+
+                       placeholder="Email Address"
+
+                       required>
+
+            </div>
+
+            <!-- PASSWORD -->
+            <div class="input-group">
+
+                <input type="password"
+                       name="password"
+
+                       placeholder="Password"
+
+                       required>
+
+            </div>
+
+            <!-- BUTTON -->
+            <button type="submit">
+
+                Sign In
+
+            </button>
+
+        </form>
+
+        <!-- REGISTER -->
+        <div class="switch">
+
+            Don't have an account?
+
+            <a href="<%= request.getContextPath() %>/views/auth/register.jsp">
+
+                Create Account
+
+            </a>
+
+        </div>
+
+        <!-- BACK -->
+        <a class="back-home"
+
+           href="<%= request.getContextPath() %>/views/user/home.jsp">
+
+            ← Back to Home
+
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

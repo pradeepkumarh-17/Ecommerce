@@ -1,0 +1,139 @@
+<%@ page contentType="text/html; charset=UTF-8" %>
+
+<%@ include file="../partials/header.jsp" %>
+
+<link rel="stylesheet"
+href="<%= request.getContextPath() %>/assets/css/account.css">
+
+<div class="account-page">
+
+    <h1>
+
+        🛍️ Checkout
+
+    </h1>
+
+    <div class="account-card">
+
+        <h2>
+
+            Shipping Details
+
+        </h2>
+
+        <form action="<%= request.getContextPath() %>/place-order"
+              method="post">
+
+            <!-- ADDRESS -->
+
+            <div class="checkout-group">
+
+                <label>
+
+                    Full Address
+
+                </label>
+
+                <textarea name="address"
+                          required></textarea>
+
+            </div>
+
+            <!-- CITY -->
+
+            <div class="checkout-group">
+
+                <label>
+
+                    City
+
+                </label>
+
+                <input type="text"
+                       name="city"
+                       required>
+
+            </div>
+
+            <!-- STATE -->
+
+            <div class="checkout-group">
+
+                <label>
+
+                    State
+
+                </label>
+
+                <input type="text"
+                       name="state"
+                       required>
+
+            </div>
+
+            <!-- PINCODE -->
+
+            <div class="checkout-group">
+
+                <label>
+
+                    Pincode
+
+                </label>
+
+                <input type="text"
+                       name="pincode"
+                       required>
+
+            </div>
+
+            <!-- PAYMENT -->
+
+            <div class="checkout-group">
+
+                <label>
+
+                    Payment Method
+
+                </label>
+
+                <select name="paymentMethod">
+
+                    <option value="COD">
+
+                        Cash On Delivery
+
+                    </option>
+
+                    <option value="UPI">
+
+                        UPI
+
+                    </option>
+
+                    <option value="CARD">
+
+                        Credit / Debit Card
+
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- BUTTON -->
+
+            <button type="submit"
+                    class="place-order-btn">
+
+                Place Order
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<%@ include file="../partials/footer.jsp" %>

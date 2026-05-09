@@ -1,0 +1,27 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EcomStore</title>
+
+    <!-- ✅ CSS MUST BE HERE -->
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/style.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/product.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="logo">EcomStore</div>
+
+    <div class="search-bar">
+        <input type="text" placeholder="Search products...">
+        <button>&#128269;</button>
+    </div>
+
+    <nav class="nav-links">
+        <a href="<%= request.getContextPath() %>/views/user/home.jsp">Home</a>
+        <a href="<%= request.getContextPath() %>/product">Products</a>
+        <a href="<%= request.getContextPath() %>/cart">Cart</a>
+        <a href="#">Login</a>
+    </nav>
+</header>

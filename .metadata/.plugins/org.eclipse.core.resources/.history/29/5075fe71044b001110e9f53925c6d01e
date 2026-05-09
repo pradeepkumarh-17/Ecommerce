@@ -1,0 +1,17 @@
+<%@ include file="../partials/header.jsp" %>
+
+<div style="text-align:center; padding:60px;">
+
+    <h1 style="color:green;">&#9989; Order Placed Successfully!</h1>
+
+    <p>Your order will be delivered soon &#128666;</p>
+
+    <br>
+
+    <a href="/EcomStore/product">
+        <button style="padding:10px 20px;">Continue Shopping</button>
+    </a>
+
+</div>
+
+<%@ include file="../partials/footer.jsp" %>

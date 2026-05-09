@@ -1,0 +1,19 @@
+package com.ecommerce.controller;
+
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+import jakarta.servlet.annotation.WebServlet;
+import java.io.IOException;
+
+@WebServlet("/product")   // 🔥 THIS FIXES YOUR ISSUE
+public class ProductController extends HttpServlet {
+
+    protected void doGet(HttpServletRequest req, HttpServletResponse res)
+            throws ServletException, IOException {
+
+        System.out.println("PRODUCT CONTROLLER HIT");
+
+        RequestDispatcher rd = req.getRequestDispatcher("views/product/products.jsp");
+        rd.forward(req, res);
+    }
+}

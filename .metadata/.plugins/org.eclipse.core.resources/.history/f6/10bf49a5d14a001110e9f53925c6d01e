@@ -1,0 +1,52 @@
+<!-- NAV -->
+<nav class="nav-links">
+
+    <!-- HOME -->
+    <a href="<%= request.getContextPath() %>/views/user/home.jsp">
+
+        Home
+
+    </a>
+
+    <!-- PRODUCTS -->
+    <a href="<%= request.getContextPath() %>/product">
+
+        Products
+
+    </a>
+
+    <!-- CART -->
+    <a href="<%= request.getContextPath() %>/cart"
+       class="cart-link">
+
+        🛒 Cart
+
+        <% if(cartCount > 0){ %>
+
+            <span class="cart-badge">
+
+                <%= cartCount %>
+
+            </span>
+
+        <% } %>
+
+    </a>
+
+    <!-- LOGIN -->
+    <a href="<%= request.getContextPath() %>/auth?action=login"
+       class="login-btn">
+
+        Login
+
+    </a>
+
+    <!-- REGISTER -->
+    <a href="<%= request.getContextPath() %>/auth?action=register"
+       class="register-btn">
+
+        Register
+
+    </a>
+
+</nav>

@@ -1,0 +1,36 @@
+<%@ page import="com.ecommerce.model.Product" %>
+
+<%@ include file="../partials/header.jsp" %>
+
+<div class="container">
+
+<%
+    Product p = (Product) request.getAttribute("product");
+
+    if (p != null) {
+%>
+
+<h2><%= p.getName() %></h2>
+
+<img src="<%= p.getImageUrl() %>" width="300">
+
+<p>Price: ₹<%= p.getPrice() %></p>
+
+<form action="/EcomStore/cart" method="post">
+    <input type="hidden" name="productId" value="<%= p.getProductId() %>">
+    <button>Add to Cart</button>
+</form>
+
+<%
+    } else {
+%>
+
+<p>Product not found</p>
+
+<%
+    }
+%>
+
+</div>
+
+<%@ include file="../partials/footer.jsp" %>

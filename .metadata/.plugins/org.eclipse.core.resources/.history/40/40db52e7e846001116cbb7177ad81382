@@ -1,0 +1,104 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%@ include file="../partials/header.jsp"%>
+
+<div class="container-3d">
+    <div class="container">
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Elevate Your Style ✨</h1>
+                <p>Premium Collections | Up to 65% Off</p>
+                <div class="hero-btns">
+                    <a href="<%= request.getContextPath() %>/product" class="btn">Shop Now</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CATEGORY -->
+        <section class="categories">
+            <h2 class="section-title">Shop by Category</h2>
+
+            <div class="category-grid">
+                <a href="<%= request.getContextPath() %>/product?category=1" class="category-card">
+                    <span>Clothes</span>
+                </a> 
+                <a href="<%= request.getContextPath() %>/product?category=2" class="category-card">
+                    <span>Toys</span>
+                </a> 
+                <a href="<%= request.getContextPath() %>/product?category=3" class="category-card">
+                    <span>Footwear</span>
+                </a> 
+                <a href="<%= request.getContextPath() %>/product?category=4" class="category-card">
+                    <span>Accessories</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- PRODUCTS -->
+        <section class="products">
+            <h2 class="section-title">Featured Products</h2>
+
+            <div class="product-grid">
+
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf" onerror="this.src='https://picsum.photos/300'">
+                    </div>
+                    <h3>Casual Shirt</h3>
+                    <p class="price">&#8377;799</p>
+                    <a href="<%= request.getContextPath() %>/product"><button class="cart-btn">View Details</button></a>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="/EcomStore/src/main/webapp/assets/images/kurti.jpg" onerror="this.src='file:///D:/tap_project_UI/EcomStore/src/main/webapp/assets/images/kurti.jpg'">
+                    </div>
+                    <h3>Women Kurti</h3>
+                    <p class="price">&#8377;999</p>
+                    <a href="<%= request.getContextPath() %>/product"><button class="cart-btn">View Details</button></a>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1585386959984-a4155223169f" onerror="this.src='https://picsum.photos/300'">
+                    </div>
+                    <h3>Kids T-Shirt</h3>
+                    <p class="price">&#8377;399</p>
+                    <a href="<%= request.getContextPath() %>/product"><button class="cart-btn">View Details</button></a>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db" onerror="this.src='https://picsum.photos/300'">
+                    </div>
+                    <h3>Toy Car</h3>
+                    <p class="price">&#8377;199</p>
+                    <a href="<%= request.getContextPath() %>/product"><button class="cart-btn">View Details</button></a>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1600180758890-6b94519a8ba6" onerror="this.src='https://picsum.photos/300'">
+                    </div>
+                    <h3>Running Shoes</h3>
+                    <p class="price">&#8377;2499</p>
+                    <a href="<%= request.getContextPath() %>/product"><button class="cart-btn">View Details</button></a>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30" onerror="this.src='https://picsum.photos/300'">
+                    </div>
+                    <h3>Wrist Watch</h3>
+                    <p class="price">&#8377;3999</p>
+                    <a href="<%= request.getContextPath() %>/product"><button class="cart-btn">View Details</button></a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+<%@ include file="../partials/footer.jsp"%>

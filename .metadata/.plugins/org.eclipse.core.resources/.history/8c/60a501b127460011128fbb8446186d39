@@ -1,0 +1,89 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<%@ include file="../partials/header.jsp" %>
+
+<div class="container">
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Summer Collection</h1>
+            <p>Up to 65% Off</p>
+            <a href="/EcomStore/product" class="btn">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- CATEGORY SECTION -->
+    <section class="categories">
+        <h2>Shop by Category</h2>
+
+        <div class="category-grid">
+            <div class="category-card">Clothes</div>
+            <div class="category-card">Toys</div>
+            <div class="category-card">Footwear</div>
+            <div class="category-card">Accessories</div>
+        </div>
+    </section>
+
+    <!-- FEATURED PRODUCTS -->
+    <!-- FEATURED PRODUCTS -->
+<section class="products">
+    <h2>Featured Products</h2>
+
+    <div class="product-grid">
+
+        <!-- 1 -->
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf" alt="Shirt">
+            <h3>Casual Shirt</h3>
+            <p class="price">₹799</p>
+            <button class="cart-btn">Add to Cart</button>
+        </div>
+
+        <!-- 2 -->
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1583391733956-6c78276477e2" alt="Kurti">
+            <h3>Women Kurti</h3>
+            <p class="price">₹999</p>
+            <button class="cart-btn">Add to Cart</button>
+        </div>
+
+        <!-- 3 -->
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1585386959984-a4155223169f" alt="Kids T-Shirt">
+            <h3>Kids T-Shirt</h3>
+            <p class="price">₹399</p>
+            <button class="cart-btn">Add to Cart</button>
+        </div>
+
+        <!-- 4 -->
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db" alt="Toy Car">
+            <h3>Toy Car</h3>
+            <p class="price">₹199</p>
+            <button class="cart-btn">Add to Cart</button>
+        </div>
+
+        <!-- 5 -->
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1615486363973-f79d8757806e" alt="Teddy">
+            <h3>Teddy Bear</h3>
+            <p class="price">₹499</p>
+            <button class="cart-btn">Add to Cart</button>
+        </div>
+
+        <!-- 6 -->
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1600180758890-6b94519a8ba6" alt="Shoes">
+            <h3>Running Shoes</h3>
+            <p class="price">₹2499</p>
+            <button class="cart-btn">Add to Cart</button>
+        </div>
+
+    </div>
+</section>
+
+</div>
+
+<%@ include file="../partials/footer.jsp" %>

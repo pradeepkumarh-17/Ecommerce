@@ -1,0 +1,8 @@
+INDEX VERSION 1.4+D:\tap_project_UIx\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3138238472.index
+600316832.index
+15503754.index
+3451440444.index
+162508284.index
+3152236358.index
+111388647.index

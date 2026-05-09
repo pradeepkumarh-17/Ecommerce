@@ -1,0 +1,291 @@
+/* =========================================================
+   LUXSTORE PREMIUM LOGIN UI
+   Modern Glassmorphism Ecommerce Design
+   ========================================================= */
+
+/* GOOGLE FONT */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* BODY */
+body{
+    font-family:'Poppins',sans-serif;
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow:auto;
+
+    background:
+        radial-gradient(circle at top left,#1d4ed8 0%,transparent 30%),
+        radial-gradient(circle at bottom right,#7c3aed 0%,transparent 30%),
+        linear-gradient(135deg,#020617,#0f172a,#111827);
+
+    position:relative;
+}
+
+/* ANIMATED GLOW */
+body::before,
+body::after{
+    content:'';
+    position:absolute;
+    width:350px;
+    height:350px;
+    border-radius:50%;
+    filter:blur(120px);
+    opacity:0.35;
+    z-index:0;
+}
+
+body::before{
+    background:#2563eb;
+    top:-100px;
+    left:-100px;
+}
+
+body::after{
+    background:#9333ea;
+    bottom:-100px;
+    right:-100px;
+}
+
+/* CONTAINER */
+.auth-container{
+    width:100%;
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:20px;
+
+    position:relative;
+    z-index:2;
+}
+
+/* LOGIN CARD */
+.auth-box{
+    width:420px;
+
+    padding:45px 35px;
+
+    border-radius:28px;
+
+    background:rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,0.12);
+
+    box-shadow:
+        0 8px 32px rgba(0,0,0,0.4),
+        inset 0 0 1px rgba(255,255,255,0.2);
+
+    text-align:center;
+
+    display:block !important;
+    visibility:visible !important;
+    opacity:1 !important;
+}
+
+/* LOGO */
+.logo{
+    font-size:38px;
+    font-weight:700;
+    letter-spacing:2px;
+
+    margin-bottom:10px;
+
+    color:#ffffff;
+}
+
+.logo span{
+    color:#60a5fa;
+}
+
+/* TITLE */
+.auth-box h2{
+    font-size:32px;
+    font-weight:600;
+
+    color:#ffffff;
+
+    margin-bottom:10px;
+}
+
+/* SUBTITLE */
+.subtitle{
+    color:#cbd5e1;
+    font-size:14px;
+
+    margin-bottom:30px;
+}
+
+/* INPUT GROUP */
+.input-group{
+    margin-bottom:20px;
+}
+
+/* INPUT */
+.auth-box input{
+    width:100%;
+
+    padding:16px 18px;
+
+    border:none;
+    outline:none;
+
+    border-radius:14px;
+
+    background:rgba(255,255,255,0.08);
+
+    border:1px solid rgba(255,255,255,0.15);
+
+    color:#ffffff;
+
+    font-size:15px;
+
+    transition:0.3s ease;
+}
+
+/* PLACEHOLDER */
+.auth-box input::placeholder{
+    color:#cbd5e1;
+}
+
+/* INPUT HOVER */
+.auth-box input:hover{
+    border-color:#60a5fa;
+}
+
+/* INPUT FOCUS */
+.auth-box input:focus{
+    border-color:#3b82f6;
+
+    box-shadow:
+        0 0 0 4px rgba(59,130,246,0.15),
+        0 0 15px rgba(59,130,246,0.3);
+
+    transform:translateY(-2px);
+}
+
+/* BUTTON */
+.auth-box button{
+    width:100%;
+
+    padding:16px;
+
+    margin-top:10px;
+
+    border:none;
+    outline:none;
+
+    border-radius:16px;
+
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+
+    color:#ffffff;
+
+    font-size:16px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:0.35s ease;
+
+    box-shadow:
+        0 10px 25px rgba(37,99,235,0.35);
+}
+
+/* BUTTON HOVER */
+.auth-box button:hover{
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 15px 35px rgba(124,58,237,0.45);
+}
+
+/* BUTTON ACTIVE */
+.auth-box button:active{
+    transform:scale(0.98);
+}
+
+/* SWITCH TEXT */
+.switch{
+    margin-top:25px;
+
+    color:#cbd5e1;
+
+    font-size:14px;
+}
+
+/* LINKS */
+.switch a,
+.back-home{
+    color:#60a5fa;
+
+    text-decoration:none;
+
+    font-weight:500;
+
+    transition:0.3s;
+}
+
+/* LINK HOVER */
+.switch a:hover,
+.back-home:hover{
+    color:#ffffff;
+}
+
+/* BACK HOME */
+.back-home{
+    display:inline-block;
+
+    margin-top:15px;
+
+    font-size:14px;
+}
+
+/* ERROR */
+.error{
+    background:rgba(220,38,38,0.15);
+
+    border:1px solid rgba(220,38,38,0.3);
+
+    color:#fecaca;
+
+    padding:12px;
+
+    border-radius:12px;
+
+    margin-bottom:20px;
+
+    font-size:14px;
+}
+
+/* RESPONSIVE */
+@media(max-width:500px){
+
+    .auth-box{
+        width:100%;
+        padding:35px 25px;
+    }
+
+    .logo{
+        font-size:30px;
+    }
+
+    .auth-box h2{
+        font-size:26px;
+    }
+}

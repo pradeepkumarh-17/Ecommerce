@@ -1,0 +1,145 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="../partials/header.jsp" %>
+
+<link rel="stylesheet" href="/EcomStore/assets/css/checkout.css">
+
+<%
+    // ✅ SAFE TOTAL (fix null issue)
+    Double totalObj = (Double) request.getAttribute("total");
+    double total = (totalObj != null) ? totalObj : 0.0;
+%>
+
+<div class="container-3d">
+    <div class="container">
+
+    <h2 class="section-title">Finalize Order &#128179;</h2>
+
+    <form action="/EcomStore/place-order" method="post" class="checkout-form">
+
+    <div class="checkout-layout">
+
+    <!-- ================= LEFT SIDE ================= -->
+    <div class="checkout-left">
+
+        <!-- ADDRESS -->
+        <div class="glass-panel checkout-card">
+            <h3>Delivery Destination</h3>
+
+            <div class="input-group">
+                <textarea name="address" placeholder="Enter full delivery address..." required></textarea>
+            </div>
+
+            <div class="row">
+                <div class="input-group">
+                    <input type="text" name="city" placeholder="City" required>
+                </div>
+                <div class="input-group">
+                    <input type="text" name="pincode" placeholder="Pincode" required>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAYMENT -->
+        <div class="glass-panel checkout-card">
+            <h3>Payment Selection</h3>
+
+            <div class="payment-options">
+                <label class="payment-option glass-panel">
+                    <input type="radio" name="payment" value="UPI" checked>
+                    <div class="option-content">
+                        <span class="icon">&#128241;</span>
+                        <div class="text">
+                            <strong>Digital Payment</strong>
+                            <p>UPI / GPay / PhonePe</p>
+                        </div>
+                    </div>
+                </label>
+
+                <label class="payment-option glass-panel">
+                    <input type="radio" name="payment" value="COD">
+                    <div class="option-content">
+                        <span class="icon">&#128184;</span>
+                        <div class="text">
+                            <strong>Cash on Delivery</strong>
+                            <p>+ ₹9 premium handling</p>
+                        </div>
+                    </div>
+                </label>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ================= RIGHT SIDE ================= -->
+    <div class="checkout-right">
+
+        <div class="glass-panel checkout-card summary-card">
+
+            <h3>Order Summary</h3>
+
+            <div class="summary-details">
+                <div class="summary-row">
+                    <span>Items Total</span>
+                    <span>₹<%= total %></span>
+                </div>
+                <div class="summary-row">
+                    <span>Shipping</span>
+                    <span class="free">COMPLIMENTARY</span>
+                </div>
+                <div id="codCharge" class="summary-row cod-charge" style="display:none;">
+                    <span>COD Surcharge</span>
+                    <span>₹9</span>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="total-row">
+                <h3>Total</h3>
+                <h2 id="finalTotal">₹<%= total %></h2>
+            </div>
+
+            <button type="submit" class="cart-btn big-btn place-order-btn">Confirm Order</button>
+
+            <div class="security-badges">
+                <span>🛡️ Premium Protection</span>
+                <span>✅ Verified Merchant</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    </div>
+
+    </form>
+
+    </div>
+</div>
+
+<!-- ================= SCRIPT ================= -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const codOption = document.querySelector("input[value='COD']");
+        const upiOption = document.querySelector("input[value='UPI']");
+        const codChargeRow = document.getElementById("codCharge");
+        const finalTotalElement = document.getElementById("finalTotal");
+
+        const orderTotal = <%= total %>;
+
+        if (codOption && upiOption) {
+            codOption.addEventListener("change", () => {
+                if (codChargeRow) codChargeRow.style.display = "flex";
+                if (finalTotalElement) finalTotalElement.innerHTML = "₹" + (orderTotal + 9);
+            });
+
+            upiOption.addEventListener("change", () => {
+                if (codChargeRow) codChargeRow.style.display = "none";
+                if (finalTotalElement) finalTotalElement.innerHTML = "₹" + orderTotal;
+            });
+        }
+    });
+</script>
+
+<%@ include file="../partials/footer.jsp" %>

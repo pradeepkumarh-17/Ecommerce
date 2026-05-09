@@ -1,0 +1,43 @@
+package com.ecommerce.controller;
+
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+import jakarta.servlet.annotation.WebServlet;
+import java.io.IOException;
+
+@WebServlet("/login")
+public class AuthController extends HttpServlet {
+
+    // ✅ HANDLE PAGE LOAD (GET)
+    protected void doGet(HttpServletRequest req, HttpServletResponse res)
+            throws ServletException, IOException {
+
+        RequestDispatcher rd = req.getRequestDispatcher("views/auth/login.jsp");
+        rd.forward(req, res);
+    }
+
+    // ✅ HANDLE FORM SUBMIT (POST)
+    protected void doPost(HttpServletRequest req, HttpServletResponse res)
+            throws ServletException, IOException {
+
+        String action = req.getParameter("action");
+
+        if ("login".equals(action)) {
+
+            String email = req.getParameter("email");
+            String password = req.getParameter("password");
+
+            if ("admin@gmail.com".equals(email) && "123456".equals(password)) {
+
+                HttpSession session = req.getSession();
+                session.setAttribute("user", email);
+
+                res.sendRedirect(req.getContextPath() + "/views/user/home.jsp");
+
+            } else {
+
+                res.sendRedirect(req.getContextPath() + "/login?error=true");
+            }
+        }
+    }
+}

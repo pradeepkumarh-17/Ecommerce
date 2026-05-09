@@ -1,0 +1,63 @@
+package com.ecommerce.controller;
+
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+import jakarta.servlet.annotation.WebServlet;
+import java.io.IOException;
+
+import com.ecommerce.dao.UserDAO;
+import com.ecommerce.dao.impl.UserDAOImpl;
+import com.ecommerce.model.User;
+
+@WebServlet("/login")   // 🔥 THIS FIXES 404
+public class AuthController extends HttpServlet {
+
+    // 👉 OPEN LOGIN PAGE
+    protected void doGet(HttpServletRequest req, HttpServletResponse res)
+            throws ServletException, IOException {
+
+        RequestDispatcher rd = req.getRequestDispatcher("views/auth/login.jsp");
+        rd.forward(req, res);
+    }
+
+    // 👉 HANDLE LOGIN / REGISTER
+    protected void doPost(HttpServletRequest req, HttpServletResponse res)
+            throws ServletException, IOException {
+
+        String action = req.getParameter("action");
+
+        UserDAO dao = new UserDAOImpl();
+
+        if ("register".equals(action)) {
+
+            User u = new User();
+            u.setFullName(req.getParameter("name"));
+            u.setEmail(req.getParameter("email"));
+            u.setPassword(req.getParameter("password"));
+
+            dao.registerUser(u);
+
+            res.sendRedirect("login");
+
+        } else if ("login".equals(action)) {
+
+            String email = req.getParameter("email");
+            String password = req.getParameter("password");
+
+            User user = dao.loginUser(email, password);
+
+            if (user != null) {
+
+                HttpSession session = req.getSession();
+                session.setAttribute("user", user);
+
+                res.sendRedirect("views/user/home.jsp");
+
+            } else {
+
+                req.setAttribute("error", "Invalid Credentials");
+                doGet(req, res);
+            }
+        }
+    }
+}

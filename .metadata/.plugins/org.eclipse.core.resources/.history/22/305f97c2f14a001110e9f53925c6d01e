@@ -1,0 +1,8 @@
+eclipse.preferences.version=1
+encoding//src/main/webapp/views/cart/cart.jsp=UTF-8
+encoding//src/main/webapp/views/order/checkout.jsp=UTF-8
+encoding//src/main/webapp/views/order/success.jsp=UTF-8
+encoding//src/main/webapp/views/partials/header.jsp=UTF-8
+encoding//src/main/webapp/views/product/product-details.jsp=UTF-8
+encoding//src/main/webapp/views/product/products.jsp=UTF-8
+encoding//src/main/webapp/views/user/wishlist.jsp=UTF-8

@@ -1,0 +1,45 @@
+package com.ecommerce.controller;
+
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+import jakarta.servlet.annotation.WebServlet;
+import java.io.IOException;
+import java.util.Map;
+
+import com.ecommerce.dao.ProductDAO;
+import com.ecommerce.dao.impl.ProductDAOImpl;
+import com.ecommerce.model.Product;
+
+@WebServlet("/checkout")
+public class CheckoutController extends HttpServlet {
+
+    protected void doGet(HttpServletRequest req, HttpServletResponse res)
+            throws ServletException, IOException {
+
+        HttpSession session = req.getSession();
+        Map<Integer, Integer> cart =
+                (Map<Integer, Integer>) session.getAttribute("cart");
+
+        ProductDAO dao = new ProductDAOImpl();
+
+        double total = 0;
+
+        if (cart != null) {
+
+            for (Map.Entry<Integer, Integer> entry : cart.entrySet()) {
+
+                Product p = dao.getProductById(entry.getKey());
+
+                total += p.getPrice() * entry.getValue();
+            }
+        }
+
+        // ✅ IMPORTANT LINE (YOU MISSED THIS)
+        req.setAttribute("total", total);
+
+        RequestDispatcher rd =
+                req.getRequestDispatcher("views/order/checkout.jsp");
+
+        rd.forward(req, res);
+    }
+}

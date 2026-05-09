@@ -1,0 +1,82 @@
+<%@ page import="java.util.*" %>
+<%@ include file="../partials/header.jsp" %>
+
+<link rel="stylesheet" href="/EcomStore/assets/css/cart.css">
+
+<div class="cart-container">
+
+<h2>Your Cart 🛒</h2>
+
+<div class="cart-layout">
+
+<!-- LEFT SIDE -->
+<div class="cart-items">
+
+<%
+    List<Object[]> list = (List<Object[]>) request.getAttribute("cartItems");
+
+    double total = 0;
+
+    if (list != null && !list.isEmpty()) {
+        for (Object[] row : list) {
+
+            double price = (double) row[2];
+            int qty = (int) row[4];
+            double sub = price * qty;
+            total += sub;
+%>
+
+<div class="cart-card">
+
+    <img src="https://source.unsplash.com/100x100/?product"
+         onerror="this.src='https://picsum.photos/100'">
+
+    <div class="cart-info">
+        <h3><%= row[1] %></h3>
+        <p class="price">₹<%= price %></p>
+
+        <p>Qty: <strong><%= qty %></strong></p>
+
+        <a class="remove-btn"
+           href="/EcomStore/remove-item?id=<%= row[0] %>">Remove</a>
+    </div>
+
+    <div class="subtotal">
+        ₹<%= sub %>
+    </div>
+
+</div>
+
+<%
+        }
+    } else {
+%>
+
+<p>Your cart is empty</p>
+
+<%
+    }
+%>
+
+</div>
+
+<!-- RIGHT SIDE -->
+<div class="cart-summary">
+
+    <h3>Price Details</h3>
+
+    <p>Total Items: <%= (list != null) ? list.size() : 0 %></p>
+
+    <h2>₹<%= total %></h2>
+
+    <a href="/EcomStore/checkout">
+        <button class="checkout-btn">Proceed to Checkout</button>
+    </a>
+
+</div>
+
+</div>
+
+</div>
+
+<%@ include file="../partials/footer.jsp" %>

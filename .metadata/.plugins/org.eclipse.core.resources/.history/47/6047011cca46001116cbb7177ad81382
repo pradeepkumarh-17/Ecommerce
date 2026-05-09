@@ -1,0 +1,59 @@
+<div class="payment-options">
+
+    <!-- 💳 CARD PAYMENT -->
+    <label class="payment-option glass-panel">
+        <input type="radio" name="payment" value="CARD">
+
+        <div class="option-content">
+            <span class="icon">💳</span>
+
+            <div class="text">
+                <strong>Card Payment</strong>
+                <p>Visa / MasterCard / RuPay</p>
+            </div>
+        </div>
+
+        <!-- CARD INPUT (UI only) -->
+        <div class="payment-extra card-fields">
+            <input type="text" placeholder="Card Number">
+            <div class="row">
+                <input type="text" placeholder="MM/YY">
+                <input type="text" placeholder="CVV">
+            </div>
+        </div>
+    </label>
+
+    <!-- 📱 UPI -->
+    <label class="payment-option glass-panel">
+        <input type="radio" name="payment" value="UPI" checked>
+
+        <div class="option-content">
+            <span class="icon">📱</span>
+
+            <div class="text">
+                <strong>UPI Payment</strong>
+                <p>GPay / PhonePe / Paytm</p>
+            </div>
+        </div>
+
+        <!-- UPI INPUT -->
+        <div class="payment-extra upi-field">
+            <input type="text" placeholder="Enter UPI ID">
+        </div>
+    </label>
+
+    <!-- 💵 COD -->
+    <label class="payment-option glass-panel">
+        <input type="radio" name="payment" value="COD">
+
+        <div class="option-content">
+            <span class="icon">💵</span>
+
+            <div class="text">
+                <strong>Cash on Delivery</strong>
+                <p>+ ₹9 premium handling</p>
+            </div>
+        </div>
+    </label>
+
+</div>

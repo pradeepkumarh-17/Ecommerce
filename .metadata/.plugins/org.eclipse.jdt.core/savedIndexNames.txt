@@ -1,0 +1,9 @@
+INDEX VERSION 1.134+D:\tap_project_UIx\.metadata\.plugins\org.eclipse.jdt.core
+35512658.index
+2080363503.index
+2587302019.index
+3674525782.index
+1865797976.index
+3152236358.index
+794933118.index
+657707105.index

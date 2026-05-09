@@ -1,0 +1,36 @@
+package com.ecommerce.controller;
+
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+import jakarta.servlet.annotation.WebServlet;
+import java.io.IOException;
+import java.util.Map;
+
+@WebServlet("/place-order")   // 🔥 THIS FIXES 404
+public class PlaceOrderController extends HttpServlet {
+
+    protected void doPost(HttpServletRequest req, HttpServletResponse res)
+            throws ServletException, IOException {
+
+        // 🔹 Get form data
+        String address = req.getParameter("address");
+        String city = req.getParameter("city");
+        String pincode = req.getParameter("pincode");
+        String payment = req.getParameter("payment");
+
+        System.out.println("Order Placed:");
+        System.out.println(address + ", " + city + " - " + pincode);
+        System.out.println("Payment: " + payment);
+
+        // 🔹 Get cart
+        HttpSession session = req.getSession();
+        Map<Integer, Integer> cart =
+                (Map<Integer, Integer>) session.getAttribute("cart");
+
+        // 🔥 (TEMP) Just clear cart
+        session.removeAttribute("cart");
+
+        // 🔹 Redirect to success page
+        res.sendRedirect("/EcomStore/views/order/success.jsp");
+    }
+}

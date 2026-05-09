@@ -1,0 +1,30 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EcomStore</title>
+
+    <!-- ✅ GLOBAL STYLES -->
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/style.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/product.css">
+
+    <!-- Optional icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="logo">EcomStore</div>
+
+    <div class="search-bar">
+        <input type="text" placeholder="Search products...">
+        <button>&#128269;</button>
+    </div>
+
+    <nav class="nav-links">
+        <a href="<%= request.getContextPath() %>/views/user/home.jsp">Home</a>
+        <a href="<%= request.getContextPath() %>/product">Products</a>
+        <a href="<%= request.getContextPath() %>/cart">&#128722; Cart</a>
+        <a href="#">Login</a>
+    </nav>
+</header>

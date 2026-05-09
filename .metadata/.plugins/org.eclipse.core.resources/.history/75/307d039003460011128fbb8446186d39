@@ -1,0 +1,68 @@
+<%@ page import="java.util.*, com.ecommerce.dao.impl.ProductDAOImpl, com.ecommerce.model.Product" %>
+
+<%@ include file="../partials/header.jsp" %>
+
+<div class="container">
+
+<h2>Your Cart</h2>
+
+<%
+    List<Integer> cart = (List<Integer>) request.getAttribute("cartItems");
+
+    ProductDAOImpl dao = new ProductDAOImpl();
+
+    double total = 0;
+
+    if (cart != null && !cart.isEmpty()) {
+%>
+
+<table border="1" width="100%">
+    <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Subtotal</th>
+    </tr>
+
+<%
+    for (int pid : cart) {
+
+        Product p = dao.getProductById(pid);
+
+        if (p != null) {
+
+            double price = p.getPrice();
+            total += price;
+%>
+
+<tr>
+    <td><%= p.getName() %></td>
+    <td>₹<%= price %></td>
+    <td>₹<%= price %></td>
+</tr>
+
+<%
+        }
+    }
+%>
+
+</table>
+
+<h3>Total: ₹<%= total %></h3>
+
+<a href="/EcomStore/checkout">
+    <button>Proceed to Checkout</button>
+</a>
+
+<%
+    } else {
+%>
+
+<p>Your cart is empty</p>
+
+<%
+    }
+%>
+
+</div>
+
+<%@ include file="../partials/footer.jsp" %>

@@ -1,0 +1,226 @@
+<%@ page contentType="text/html; charset=UTF-8" %>
+
+<%@ include file="../partials/header.jsp" %>
+
+<link rel="stylesheet"
+href="<%= request.getContextPath() %>/assets/css/checkout.css">
+
+<div class="checkout-container">
+
+    <h1 class="checkout-title">
+
+        🛍️ Checkout
+
+    </h1>
+
+    <div class="checkout-layout">
+
+        <!-- LEFT -->
+
+        <div class="checkout-left">
+
+            <!-- SHIPPING -->
+
+            <div class="card">
+
+                <h2>
+
+                    Shipping Address
+
+                </h2>
+
+                <form>
+
+                    <div class="form-group">
+
+                        <label>
+
+                            Full Address
+
+                        </label>
+
+                        <textarea
+                            placeholder="Enter your address"></textarea>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="form-group">
+
+                            <label>
+
+                                City
+
+                            </label>
+
+                            <input type="text"
+                                   placeholder="City">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>
+
+                                State
+
+                            </label>
+
+                            <input type="text"
+                                   placeholder="State">
+
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="form-group">
+
+                            <label>
+
+                                Pincode
+
+                            </label>
+
+                            <input type="text"
+                                   placeholder="Pincode">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>
+
+                                Phone
+
+                            </label>
+
+                            <input type="text"
+                                   placeholder="Phone">
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+            <!-- PAYMENT -->
+
+            <div class="card">
+
+                <h2>
+
+                    Payment Method
+
+                </h2>
+
+                <label class="payment-option">
+
+                    <input type="radio"
+                           name="payment">
+
+                    Cash On Delivery
+
+                </label>
+
+                <label class="payment-option">
+
+                    <input type="radio"
+                           name="payment">
+
+                    UPI Payment
+
+                </label>
+
+                <label class="payment-option">
+
+                    <input type="radio"
+                           name="payment">
+
+                    Credit / Debit Card
+
+                </label>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT -->
+
+        <div class="checkout-right">
+
+            <div class="card">
+
+                <h2>
+
+                    Order Summary
+
+                </h2>
+
+                <div class="summary-item">
+
+                    <span>
+
+                        Subtotal
+
+                    </span>
+
+                    <span>
+
+                        ₹2499
+
+                    </span>
+
+                </div>
+
+                <div class="summary-item">
+
+                    <span>
+
+                        Delivery
+
+                    </span>
+
+                    <span>
+
+                        FREE
+
+                    </span>
+
+                </div>
+
+                <div class="summary-total">
+
+                    <span>
+
+                        Total
+
+                    </span>
+
+                    <span>
+
+                        ₹2499
+
+                    </span>
+
+                </div>
+
+                <button class="place-order-btn">
+
+                    Place Order
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<%@ include file="../partials/footer.jsp" %>

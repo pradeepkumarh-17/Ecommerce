@@ -1,0 +1,98 @@
+<%@ page import="java.util.*, com.ecommerce.dao.*, com.ecommerce.dao.impl.*, com.ecommerce.model.Product" %>
+<%@ include file="../partials/header.jsp" %>
+
+<link rel="stylesheet" href="/EcomStore/assets/css/cart.css">
+
+<div class="container-3d">
+    <div class="container">
+
+    <h2 class="section-title">Your Collection &#128722;</h2>
+
+    <div class="cart-layout">
+
+        <!-- LEFT SIDE -->
+        <div class="cart-items">
+
+        <%
+            Map<Integer, Integer> cart = (Map<Integer, Integer>) session.getAttribute("cart");
+            ProductDAO dao = new ProductDAOImpl();
+            double total = 0;
+
+            if (cart != null && !cart.isEmpty()) {
+                for (Map.Entry<Integer, Integer> entry : cart.entrySet()) {
+                    int productId = entry.getKey();
+                    int qty = entry.getValue();
+                    Product p = dao.getProductById(productId);
+                    double price = p.getPrice();
+                    double sub = price * qty;
+                    total += sub;
+        %>
+
+        <div class="cart-card glass-panel">
+
+            <div class="cart-img-wrapper">
+                <img src="<%= p.getImageUrl() %>" onerror="this.src='https://picsum.photos/100'">
+            </div>
+
+            <div class="cart-info">
+                <h3><%= p.getName() %></h3>
+                <p class="price">₹<%= price %></p>
+                <div class="qty-badge">Quantity: <span><%= qty %></span></div>
+                <a class="remove-btn" href="/EcomStore/remove-item?id=<%= productId %>">Remove Item</a>
+            </div>
+
+            <div class="subtotal">
+                <span class="label">Subtotal</span>
+                <span class="value">₹<%= sub %></span>
+            </div>
+
+        </div>
+
+        <%
+                }
+            } else {
+        %>
+
+        <div class="empty-cart glass-panel">
+            <p>Your premium collection is currently empty.</p>
+            <a href="/EcomStore/product" class="btn">Explore Catalog</a>
+        </div>
+
+        <%
+            }
+        %>
+
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="cart-summary glass-panel">
+
+            <h3>Order Summary</h3>
+
+            <div class="summary-details">
+                <div class="summary-row">
+                    <span>Total Items</span>
+                    <span><%= (cart != null) ? cart.size() : 0 %></span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total Amount</span>
+                    <span>₹<%= total %></span>
+                </div>
+            </div>
+
+            <a href="/EcomStore/checkout">
+                <button class="cart-btn big-btn checkout-btn">Secure Checkout</button>
+            </a>
+
+            <div class="security-note">
+                <p>🔒 SSL Secure Payment</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    </div>
+</div>
+
+<%@ include file="../partials/footer.jsp" %>

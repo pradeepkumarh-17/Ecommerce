@@ -1,0 +1,54 @@
+package com.ecommerce.controller;
+
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+import jakarta.servlet.annotation.WebServlet;
+import java.io.IOException;
+import java.util.Map;
+
+import com.ecommerce.dao.ProductDAO;
+import com.ecommerce.dao.impl.ProductDAOImpl;
+import com.ecommerce.model.Product;
+
+@WebServlet("/checkout")
+public class CheckoutController extends HttpServlet {
+
+	protected void doGet(HttpServletRequest req, HttpServletResponse res)
+	        throws ServletException, IOException {
+
+	    HttpSession session = req.getSession();
+
+	    // ✅ 1. CHECK LOGIN
+	    Object user = session.getAttribute("user");
+
+	    if (user == null) {
+	        res.sendRedirect(req.getContextPath() + "/login?msg=login_required");
+	        return;
+	    }
+
+	    // ✅ 2. CHECK CART
+	    Map<Integer, Integer> cart =
+	            (Map<Integer, Integer>) session.getAttribute("cart");
+
+	    if (cart == null || cart.isEmpty()) {
+	        res.sendRedirect(req.getContextPath() + "/cart?msg=empty_cart");
+	        return;
+	    }
+
+	    // ✅ 3. CALCULATE TOTAL
+	    ProductDAO dao = new ProductDAOImpl();
+	    double total = 0;
+
+	    for (Map.Entry<Integer, Integer> entry : cart.entrySet()) {
+	        Product p = dao.getProductById(entry.getKey());
+	        if (p != null) {
+	            total += p.getPrice() * entry.getValue();
+	        }
+	    }
+
+	    req.setAttribute("total", total);
+
+	    RequestDispatcher rd = req.getRequestDispatcher("views/cart/checkout.jsp");
+	    rd.forward(req, res);
+	}
+    }

@@ -1,0 +1,116 @@
+<%@ page contentType="text/html; charset=UTF-8" %>
+
+<%@ include file="../partials/header.jsp" %>
+
+<link rel="stylesheet"
+href="<%= request.getContextPath() %>/assets/css/checkout.css">
+
+<div class="success-page">
+
+    <div class="success-card">
+
+        <!-- SUCCESS ICON -->
+
+        <div class="success-icon">
+
+            ✓
+
+        </div>
+
+        <!-- TITLE -->
+
+        <h1>
+
+            Order Placed Successfully!
+
+        </h1>
+
+        <!-- MESSAGE -->
+
+        <p>
+
+            Thank you for shopping with LuxStore.
+            Your premium order has been confirmed
+            and will be delivered soon 🚚
+
+        </p>
+
+        <!-- ORDER INFO -->
+
+        <div class="success-info">
+
+            <div class="success-row">
+
+                <span>
+
+                    Order Status
+
+                </span>
+
+                <strong>
+
+                    Confirmed
+
+                </strong>
+
+            </div>
+
+            <div class="success-row">
+
+                <span>
+
+                    Delivery
+
+                </span>
+
+                <strong>
+
+                    2-4 Business Days
+
+                </strong>
+
+            </div>
+
+            <div class="success-row">
+
+                <span>
+
+                    Payment
+
+                </span>
+
+                <strong>
+
+                    Successful
+
+                </strong>
+
+            </div>
+
+        </div>
+
+        <!-- BUTTONS -->
+
+        <div class="success-actions">
+
+            <a href="<%= request.getContextPath() %>/product"
+               class="success-btn">
+
+                Continue Shopping
+
+            </a>
+
+            <a href="<%= request.getContextPath() %>/orders"
+               class="track-btn">
+
+                View Orders
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<%@ include file="../partials/footer.jsp" %>

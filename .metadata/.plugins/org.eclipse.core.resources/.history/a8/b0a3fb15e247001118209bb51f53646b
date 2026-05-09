@@ -1,0 +1,39 @@
+package com.ecommerce.controller;
+
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+import jakarta.servlet.annotation.WebServlet;
+import java.io.IOException;
+
+@WebServlet("/login")   // ✅ MATCHES JSP
+public class AuthController extends HttpServlet {
+
+    protected void doPost(HttpServletRequest req, HttpServletResponse res)
+            throws ServletException, IOException {
+
+        String action = req.getParameter("action");
+
+        if ("login".equals(action)) {
+
+            String email = req.getParameter("email");
+            String password = req.getParameter("password");
+
+            // ✅ TEMP LOGIN (replace with DB later)
+            if ("admin@gmail.com".equals(email) && "123456".equals(password)) {
+
+                HttpSession session = req.getSession();
+                session.setAttribute("user", email);
+
+                System.out.println("✅ LOGIN SUCCESS");
+
+                res.sendRedirect(req.getContextPath() + "/views/user/home.jsp");
+
+            } else {
+
+                System.out.println("❌ LOGIN FAILED");
+
+                res.sendRedirect(req.getContextPath() + "/login?error=true");
+            }
+        }
+    }
+}

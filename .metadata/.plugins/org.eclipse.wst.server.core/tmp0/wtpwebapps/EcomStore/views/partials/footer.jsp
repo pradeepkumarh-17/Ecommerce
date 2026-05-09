@@ -1,0 +1,11 @@
+<footer class="footer">
+    <div class="footer-content">
+        <p>&copy; 2026 CloudCart | Designed for Premium Excellence</p>
+    </div>
+</footer>
+
+<!-- Modern UI Logic -->
+<script src="<%= request.getContextPath() %>/assets/js/modern-ui.js"></script>
+
+</body>
+</html>

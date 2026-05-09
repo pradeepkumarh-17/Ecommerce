@@ -1,0 +1,35 @@
+package com.ecommerce.controller;
+
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+import jakarta.servlet.annotation.WebServlet;
+import java.io.IOException;
+
+@WebServlet("/checkout")   // 🔥 IMPORTANT
+public class CheckoutController extends HttpServlet {
+
+    protected void doGet(HttpServletRequest req, HttpServletResponse res)
+            throws ServletException, IOException {
+
+        System.out.println("CHECKOUT HIT");
+
+        RequestDispatcher rd =
+                req.getRequestDispatcher("views/order/checkout.jsp");
+
+        rd.forward(req, res);
+    }
+
+    protected void doPost(HttpServletRequest req, HttpServletResponse res)
+            throws ServletException, IOException {
+
+        String address = req.getParameter("address");
+        String payment = req.getParameter("payment");
+
+        System.out.println("Order placed: " + address + " | " + payment);
+
+        HttpSession session = req.getSession();
+        session.removeAttribute("cart");
+
+        res.sendRedirect("/EcomStore/order-success");
+    }
+}

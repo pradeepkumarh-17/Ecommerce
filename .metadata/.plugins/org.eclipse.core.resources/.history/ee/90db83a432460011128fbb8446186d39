@@ -1,0 +1,90 @@
+<%@ page import="java.util.*, com.ecommerce.dao.*, com.ecommerce.dao.impl.*, com.ecommerce.model.Product" %>
+<%@ include file="../partials/header.jsp" %>
+
+<link rel="stylesheet" href="/EcomStore/assets/css/cart.css">
+
+<div class="cart-container">
+
+<h2>Your Cart 🛒</h2>
+
+<div class="cart-layout">
+
+<!-- LEFT SIDE -->
+<div class="cart-items">
+
+<%
+    Map<Integer, Integer> cart =
+        (Map<Integer, Integer>) session.getAttribute("cart");
+
+    ProductDAO dao = new ProductDAOImpl();
+
+    double total = 0;
+
+    if (cart != null && !cart.isEmpty()) {
+
+        for (Map.Entry<Integer, Integer> entry : cart.entrySet()) {
+
+            int productId = entry.getKey();
+            int qty = entry.getValue();
+
+            Product p = dao.getProductById(productId);
+
+            double price = p.getPrice();
+            double sub = price * qty;
+            total += sub;
+%>
+
+<div class="cart-card">
+
+    <img src="<%= p.getImageUrl() %>"
+         onerror="this.src='https://picsum.photos/100'">
+
+    <div class="cart-info">
+        <h3><%= p.getName() %></h3>
+        <p class="price">₹<%= price %></p>
+
+        <p>Qty: <strong><%= qty %></strong></p>
+
+        <a class="remove-btn"
+           href="/EcomStore/remove-item?id=<%= productId %>">Remove</a>
+    </div>
+
+    <div class="subtotal">
+        ₹<%= sub %>
+    </div>
+
+</div>
+
+<%
+        }
+    } else {
+%>
+
+<p>Your cart is empty</p>
+
+<%
+    }
+%>
+
+</div>
+
+<!-- RIGHT SIDE -->
+<div class="cart-summary">
+
+    <h3>Price Details</h3>
+
+    <p>Total Items: <%= (cart != null) ? cart.size() : 0 %></p>
+
+    <h2>₹<%= total %></h2>
+
+    <a href="/EcomStore/checkout">
+        <button class="checkout-btn">Proceed to Checkout</button>
+    </a>
+
+</div>
+
+</div>
+
+</div>
+
+<%@ include file="../partials/footer.jsp" %>

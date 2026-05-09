@@ -1,0 +1,114 @@
+<%@ page import="com.ecommerce.model.Product" %>
+<%@ include file="../partials/header.jsp" %>
+
+<link rel="stylesheet" href="/EcomStore/assets/css/product.css">
+
+<div class="container">
+
+<%
+    Product p = (Product) request.getAttribute("product");
+
+    if (p != null) {
+
+        String img = p.getImageUrl();
+
+        if (img == null || img.isEmpty()) {
+            img = "https://picsum.photos/400";
+        }
+%>
+
+<div class="product-details">
+
+    <!-- IMAGE -->
+    <div class="image-section">
+        <img src="<%= img %>"
+             onerror="this.src='https://source.unsplash.com/400x400/?product';">
+    </div>
+
+    <!-- INFO -->
+    <div class="info-section">
+
+        <h2><%= p.getName() %></h2>
+
+        <!-- ⭐ RATING -->
+        <div class="rating">
+            ⭐⭐⭐⭐☆ <span>(4.2/5 • 120 reviews)</span>
+        </div>
+
+        <!-- 💸 PRICE -->
+        <p class="price">₹<%= p.getPrice() %></p>
+        <p style="color:red;">20% OFF</p>
+
+        <!-- 📄 DESCRIPTION -->
+        <p class="desc">
+            Premium quality product. Comfortable, stylish, and durable for everyday use.
+        </p>
+
+        <!-- 🎨 COLOR -->
+        <div class="option">
+            <strong>Color:</strong>
+            <span class="color-box" style="background:black;"></span>
+            <span class="color-box" style="background:blue;"></span>
+            <span class="color-box" style="background:red;"></span>
+        </div>
+
+        <!-- 👕 SIZE -->
+        <div class="option">
+            <strong>Size:</strong>
+            <span class="size-box">S</span>
+            <span class="size-box">M</span>
+            <span class="size-box">L</span>
+            <span class="size-box">XL</span>
+        </div>
+
+        <!-- 🚚 DELIVERY -->
+        <p><strong>Delivery:</strong> Free delivery in 3-5 days</p>
+
+        <!-- 🛒 ADD TO CART -->
+        <form action="/EcomStore/cart" method="post">
+            <input type="hidden" name="productId" value="<%= p.getProductId() %>">
+            <button class="cart-btn big-btn">Add to Cart</button>
+        </form>
+
+    </div>
+
+</div>
+
+<!-- 💬 REVIEWS SECTION -->
+<div class="reviews">
+
+    <h3>Customer Reviews</h3>
+
+    <div class="review-card">
+        ⭐⭐⭐⭐⭐
+        <p>Excellent quality! Worth the price.</p>
+        <small>- Pradeep</small>
+    </div>
+
+    <div class="review-card">
+        ⭐⭐⭐⭐☆
+        <p>Good product, fast delivery.</p>
+        <small>- Rahul</small>
+    </div>
+
+    <div class="review-card">
+        ⭐⭐⭐⭐☆
+        <p>Nice fabric and comfortable.</p>
+        <small>- Sneha</small>
+    </div>
+
+</div>
+
+<%
+    } else {
+%>
+
+<p>Product not found</p>
+
+<%
+    }
+%>
+
+</div>
+
+<%@ include file="../partials/footer.jsp" %>
